@@ -1,0 +1,76 @@
+ <div class="container mt-2">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+                aria-selected="true">Add User</a>
+        </li>
+        <!-- <li class="nav-item">
+            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+                aria-selected="false">User</a>
+        </li> -->
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <form [formGroup] = "userForm" (ngSubmit) = "submit()">
+                <div class="row  mt-2 d-flex">
+                    <div class="form-group col-md-6">
+                        <label for="formGroupExampleInput">Name</label>
+                        <input type="text" class="form-control" name="Name" formControlName="Name" id="formGroupExampleInput"
+                            placeholder="Name of Crciketer">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="formGroupExampleInput2">Email</label>
+                        <input type="text" class="form-control"  name="Email" formControlName="Email" id="formGroupExampleInput2" placeholder="Enter Email">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="formGroupExampleInput">Age</label>
+                        <input type="text" class="form-control"  name="Age" formControlName="Age" id="formGroupExampleInput"
+                            placeholder="Enter the age of cricketer">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="formGroupExampleInput2">Stats</label>
+                        <input type="text" class="form-control"  name="Stats" formControlName="Stats" id="formGroupExampleInput2"
+                            placeholder="Enter ODI/TEST runs">
+                    </div>
+                </div>
+                <div class="column mt-2 d-flex btns">
+                    <button type = "submit" class="btn btn-primary">Add</button>&nbsp;
+                    <button type = "reset" class="btn btn-secondary">Reset</button>
+
+                </div>
+            </form>
+        </div>
+        <br>
+        <br>
+        <h4 class="paragraph">List Of Cricketers</h4>
+        <br>
+
+        <!-- <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"> -->
+            <table class="table table-striped">
+                <thead>
+                  <tr >
+                    <th scope="col">SL.No</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Stats</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor = "let list of cricketers let i = index">
+                    <th scope="row">{{list.id}}</th>
+                    <td>{{list.Name}}</td>
+                    <td>{{list.Email}}</td>
+                    <td>{{list.Age}}</td>
+                    <td>{{list.Stats}}</td>
+                    <td>
+                        <button class = "btn btn-primary m-1" type = "button" (click) = "GetCricketerById(list.id)">Edit</button>
+                        <button class = "btn btn-danger m-1" type = "button" (click) = "DeteleById(list.id)">Delete</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    <!-- </div> -->
+</div>
